@@ -1,0 +1,23 @@
+[project]
+name = "marketing_video_editor"
+version = "0.1.0"
+description = "marketing-video-editor using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.102.0,<1.0.0"
+]
+
+[project.scripts]
+marketing_video_editor = "marketing_video_editor.main:run"
+run_crew = "marketing_video_editor.main:run"
+train = "marketing_video_editor.main:train"
+replay = "marketing_video_editor.main:replay"
+test = "marketing_video_editor.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
