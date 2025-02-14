@@ -50,6 +50,6 @@ class VideoJungleEditTool(VideoJungleApiBaseTool):
                 "audio_overlay": [audio.dict() for audio in (audio_overlay or [])]
             }
             
-            return self.render_edit(project_id=project_id, create_edit=create_edit)
+            return self.client.render_edit(project_id=project_id, create_edit=create_edit)
         except Exception as e:
             return f"An error occurred during video edit creation: {str(e)}"
