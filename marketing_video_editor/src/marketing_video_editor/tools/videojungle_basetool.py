@@ -13,7 +13,7 @@ class VideoJungleApiBaseTool(BaseTool):
         super().__init__(**kwargs)
 
         try:
-            from videojungle import ApiClient,  VideoSearch, VideoFile, VideoEditAsset, VideoEditCreate  # type: ignore
+            from videojungle import ApiClient,  VideoSearch, VideoFile, VideoEditAsset, VideoEditCreate, VideoUpload  # type: ignore
         except ImportError:
             import click
 
@@ -23,7 +23,7 @@ class VideoJungleApiBaseTool(BaseTool):
                 import subprocess
 
                 subprocess.run(["uv", "add", "videojungle"], check=True)
-                from videojungle import ApiClient, VideoSearch, VideoFile, VideoEditAsset, VideoEditCreate 
+                from videojungle import ApiClient, VideoSearch, VideoFile, VideoEditAsset, VideoEditCreate, VideoUpload # type: ignore
             else:
                 raise ImportError(
                     "`videojungle` package not found, please install with `uv add videojungle`"
@@ -34,10 +34,11 @@ class VideoJungleApiBaseTool(BaseTool):
                 "Missing API key, you can get the key from https://www.video-jungle.com/profile/settings"
             )
         self.client = ApiClient(token=api_key)
-        self.VideoSearch = VideoSearch
-        self.VideoFile = VideoFile
-        self.VideoEditAsset = VideoEditAsset
-        self.VideoEdit = VideoEditCreate
+        self.VideoSearchSchema = VideoSearch
+        self.VideoFileSchema = VideoFile
+        self.VideoEditAssetSchema = VideoEditAsset
+        self.VideoEditSchema = VideoEditCreate
+        self.VideoUploadSchema = VideoUpload
 
     def _omit_fields(self, data: Union[dict, list], omit_patterns: list[str]) -> None:
         if isinstance(data, dict):

@@ -42,13 +42,7 @@ class MarketingVideoEditor():
 	# task dependencies, and task callbacks, check out the documentation:
 	# https://docs.crewai.com/concepts/tasks#overview-of-a-task
 	@task
-	def video_editor_task(self) -> Task:
-		return Task(
-			config=self.tasks_config['video_editor_task'],
-		)
-
-	@task
-	def reporting_task(self) -> Task:
+	def sourcing_task(self) -> Task:
 		return Task(
 			config=self.tasks_config['sourcing_task'],
 			output_file='edit.json'
@@ -60,6 +54,13 @@ class MarketingVideoEditor():
 			config=self.tasks_config['scriptwriting_task'],
 			output_file='script.json'
 		)
+
+	@task
+	def video_editor_task(self) -> Task:
+		return Task(
+			config=self.tasks_config['video_editor_task'],
+		)
+
 	@crew
 	def crew(self) -> Crew:
 		"""Creates the MarketingVideoEditor crew"""

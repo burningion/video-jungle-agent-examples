@@ -11,7 +11,7 @@ class VideoJungleEditTool(VideoJungleApiBaseTool):
     )
     name: str = "Video Jungle Edit"
     description: str = (
-        "A tool to perform to perform edits on your Video Jungle library."
+        "A tool to perform edits on your Video Jungle library."
     )
     args_schema: Type[BaseModel] = VideoJungleApiBaseTool.VideoEditSchema
     def _run(
