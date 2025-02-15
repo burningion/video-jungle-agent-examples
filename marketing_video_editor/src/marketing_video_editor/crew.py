@@ -18,16 +18,23 @@ class MarketingVideoEditor():
 	# If you would like to add tools to your agents, you can learn more about it here:
 	# https://docs.crewai.com/concepts/agents#agent-tools
 	@agent
-	def researcher(self) -> Agent:
+	def video_editor(self) -> Agent:
 		return Agent(
-			config=self.agents_config['researcher'],
+			config=self.agents_config['video_editor'],
 			verbose=True
 		)
 
 	@agent
-	def reporting_analyst(self) -> Agent:
+	def video_sourcing_agent(self) -> Agent:
 		return Agent(
-			config=self.agents_config['reporting_analyst'],
+			config=self.agents_config['video_sourcing_agent'],
+			verbose=True
+		)
+	
+	@agent
+	def scriptwriter(self) -> Agent:
+		return Agent(
+			config=self.agents_config['scriptwriter'],
 			verbose=True
 		)
 
@@ -35,18 +42,24 @@ class MarketingVideoEditor():
 	# task dependencies, and task callbacks, check out the documentation:
 	# https://docs.crewai.com/concepts/tasks#overview-of-a-task
 	@task
-	def research_task(self) -> Task:
+	def video_editor_task(self) -> Task:
 		return Task(
-			config=self.tasks_config['research_task'],
+			config=self.tasks_config['video_editor_task'],
 		)
 
 	@task
 	def reporting_task(self) -> Task:
 		return Task(
-			config=self.tasks_config['reporting_task'],
-			output_file='report.md'
+			config=self.tasks_config['sourcing_task'],
+			output_file='edit.json'
 		)
 
+	@task 
+	def scriptwriting_task(self) -> Task:
+		return Task(
+			config=self.tasks_config['scriptwriting_task'],
+			output_file='script.json'
+		)
 	@crew
 	def crew(self) -> Crew:
 		"""Creates the MarketingVideoEditor crew"""

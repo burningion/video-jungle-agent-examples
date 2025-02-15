@@ -1,17 +1,27 @@
-research_task:
+video_editor_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
+    Think through the best way to present on {topic}, according to the script {script}.
+    You have access to a video library to create 30-60 second style documentary clips.
+    These should be formatted for social media, with a focus on engaging the audience.
+    Here are the clips you have access to:
+    {video_clips}
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+   {video_format}
+  agent: video_editor
 
-reporting_task:
+sourcing_task:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Create a list of seach terms and sources for {topic}. You should include a variety of sources
+    from videos. The goal is to provide a comprehensive set of source videos for an editor to use.
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    A list of the video ids, along with the timepoints to include with a description of each video.
+  agent: video_sourcing_agent
+
+scriptwriting_task:
+  description: >
+   Write a voiceover script for the video edit on {topic}. The voiceover should be engaging and informative,
+    and should be timed to match the video clips. Here is the script you will be reading:
+    {script}
+  expected_output: >
+    A voiceover script that is engaging and informative, and fits into a social media style post.
+  agent: voiceover_artist
