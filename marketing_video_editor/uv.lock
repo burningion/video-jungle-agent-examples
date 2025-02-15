@@ -1807,10 +1807,14 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "crewai", extra = ["tools"] },
+    { name = "videojungle" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "crewai", extras = ["tools"], specifier = ">=0.102.0,<1.0.0" }]
+requires-dist = [
+    { name = "crewai", extras = ["tools"], specifier = ">=0.102.0,<1.0.0" },
+    { name = "videojungle", specifier = ">=0.1.40" },
+]
 
 [[package]]
 name = "markupsafe"
@@ -3746,6 +3750,20 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/06/a7/b4e6a19925c900be9f98bec0a75e6e8f79bb53bdeb891916609ab3958967/uvloop-0.21.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:86975dca1c773a2c9864f4c52c5a55631038e387b47eaf56210f873887b6c8dc", size = 4693770 },
     { url = "https://files.pythonhosted.org/packages/ce/0c/f07435a18a4b94ce6bd0677d8319cd3de61f3a9eeb1e5f8ab4e8b5edfcb3/uvloop-0.21.0-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:461d9ae6660fbbafedd07559c6a2e57cd553b34b0065b6550685f6653a98c1cb", size = 4451321 },
     { url = "https://files.pythonhosted.org/packages/8f/eb/f7032be105877bcf924709c97b1bf3b90255b4ec251f9340cef912559f28/uvloop-0.21.0-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:183aef7c8730e54c9a3ee3227464daed66e37ba13040bb3f350bc2ddc040f22f", size = 4659022 },
+]
+
+[[package]]
+name = "videojungle"
+version = "0.1.40"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httpx" },
+    { name = "pydantic" },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/7f/ec/98abc9aa35dc98b5f430c7a5d9d32077245a9b7ee17049b305c93b774b63/videojungle-0.1.40.tar.gz", hash = "sha256:c92bad8924e5f6dda5abc94962dde51084445b94e4323ff2f1a269ad213f2439", size = 8761 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/79/72/d4926d1ef571791a40fd367f48c56f4c02c7e3e66535497757661689aabc/videojungle-0.1.40-py3-none-any.whl", hash = "sha256:ed8d6f47633d215da197ca6575053de780f6b1cbf304c2b03e272c0891ad6d5f", size = 8158 },
 ]
 
 [[package]]

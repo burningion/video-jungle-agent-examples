@@ -3334,21 +3334,21 @@ dependencies = [
 requires-dist = [
     { name = "crewai", specifier = ">=0.102.0" },
     { name = "crewai-tools", specifier = ">=0.36.0" },
-    { name = "videojungle", specifier = ">=0.1.35" },
+    { name = "videojungle", specifier = ">=0.1.40" },
 ]
 
 [[package]]
 name = "videojungle"
-version = "0.1.35"
+version = "0.1.40"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "httpx" },
     { name = "pydantic" },
     { name = "requests" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/3d/93/15f4361c0bd4db4bc28001df099d8c99ed52b23927b059f1cbea0e8c6910/videojungle-0.1.35.tar.gz", hash = "sha256:9a644a1cda8e7da1e78b53e8235621db66989773342e14d030709b477662042b", size = 7579 }
+sdist = { url = "https://files.pythonhosted.org/packages/7f/ec/98abc9aa35dc98b5f430c7a5d9d32077245a9b7ee17049b305c93b774b63/videojungle-0.1.40.tar.gz", hash = "sha256:c92bad8924e5f6dda5abc94962dde51084445b94e4323ff2f1a269ad213f2439", size = 8761 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/cd/6d/f594fe8b0fd042330969669f89d00a2789d492fd8b615c238342d718d5f9/videojungle-0.1.35-py3-none-any.whl", hash = "sha256:50812b3522334dff6c7e40c69fddea3e20af1be1c0a1bfb6b3103f4ea0590e49", size = 7031 },
+    { url = "https://files.pythonhosted.org/packages/79/72/d4926d1ef571791a40fd367f48c56f4c02c7e3e66535497757661689aabc/videojungle-0.1.40-py3-none-any.whl", hash = "sha256:ed8d6f47633d215da197ca6575053de780f6b1cbf304c2b03e272c0891ad6d5f", size = 8158 },
 ]
 
 [[package]]
