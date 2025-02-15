@@ -1808,13 +1808,23 @@ source = { editable = "." }
 dependencies = [
     { name = "crewai", extra = ["tools"] },
     { name = "videojungle" },
+    { name = "yt-dlp" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "ipython" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "crewai", extras = ["tools"], specifier = ">=0.102.0,<1.0.0" },
     { name = "videojungle", specifier = ">=0.1.40" },
+    { name = "yt-dlp", specifier = ">=2025.1.26" },
 ]
+
+[package.metadata.requires-dev]
+dev = [{ name = "ipython", specifier = ">=8.32.0" }]
 
 [[package]]
 name = "markupsafe"
@@ -3987,6 +3997,15 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/7d/e3/924c3f64b6b3077889df9a1ece1ed8947e7b61b0a933f2ec93041990a677/yarl-1.18.3-cp312-cp312-win32.whl", hash = "sha256:f91c4803173928a25e1a55b943c81f55b8872f0018be83e3ad4938adffb77dd2", size = 84097 },
     { url = "https://files.pythonhosted.org/packages/34/45/0e055320daaabfc169b21ff6174567b2c910c45617b0d79c68d7ab349b02/yarl-1.18.3-cp312-cp312-win_amd64.whl", hash = "sha256:7e2ee16578af3b52ac2f334c3b1f92262f47e02cc6193c598502bd46f5cd1477", size = 90399 },
     { url = "https://files.pythonhosted.org/packages/f5/4b/a06e0ec3d155924f77835ed2d167ebd3b211a7b0853da1cf8d8414d784ef/yarl-1.18.3-py3-none-any.whl", hash = "sha256:b57f4f58099328dfb26c6a771d09fb20dbbae81d20cfb66141251ea063bd101b", size = 45109 },
+]
+
+[[package]]
+name = "yt-dlp"
+version = "2025.1.26"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/0e/8c/b8b04d88f2d3f579fb5fcb65bdf66abbec3e1d22a3b982e3d2f63301ef2e/yt_dlp-2025.1.26.tar.gz", hash = "sha256:1c9738266921ad43c568ad01ac3362fb7c7af549276fbec92bd72f140da16240", size = 2922241 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/33/9b/1b28a179fb4e1c751ab2a3d39c82606a9754a0d4521d7a9b7579e08aa5f8/yt_dlp-2025.1.26-py3-none-any.whl", hash = "sha256:3e76bd896b9f96601021ca192ca0fbdd195e3c3dcc28302a3a34c9bc4979da7b", size = 3181256 },
 ]
 
 [[package]]

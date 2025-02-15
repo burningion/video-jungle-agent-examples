@@ -1,6 +1,8 @@
 from typing import Any, Optional, Type, List
 from pydantic import BaseModel, ConfigDict
 from .videojungle_basetool import VideoJungleApiBaseTool
+import yt_dlp
+import uuid
 from datetime import datetime
 
 class VideoJungleDownloadTool(VideoJungleApiBaseTool):
@@ -28,7 +30,14 @@ class VideoJungleDownloadTool(VideoJungleApiBaseTool):
             if upload_method != 'url':
                 self.client.video_files.create(name=name, filename=filename)
             elif upload_method == 'url':
-                self.client.video_files.create(name=name, filename=filename, upload_method=upload_method)
+                opts = {
+                    'format': 'best',
+                    'outtmpl': f'{str(uuid.uuid4())}.mp4'
+                }
+                with yt_dlp.YoutubeDL() as ydl:
+                    ydl.download([filename])    
+                
+                self.client.video_files.create(name=name, filename=opts['outtmpl'])
             
         except Exception as e:
             return f"An error occurred during video edit creation: {str(e)}"
