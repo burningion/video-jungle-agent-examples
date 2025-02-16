@@ -1,5 +1,8 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
+from .tools.videojungle_edit_tool import VideoJungleEditTool
+from .tools.videojungle_download import VideoJungleDownloadTool
+from .tools.videojungle_search_tool import VideoJungleSearchTool
 
 # If you want to run a snippet of code before or after the crew starts, 
 # you can use the @before_kickoff and @after_kickoff decorators
@@ -21,6 +24,7 @@ class MarketingVideoEditor():
 	def video_editor(self) -> Agent:
 		return Agent(
 			config=self.agents_config['video_editor'],
+			tools=[VideoJungleEditTool],
 			verbose=True
 		)
 
@@ -28,6 +32,7 @@ class MarketingVideoEditor():
 	def video_sourcing_agent(self) -> Agent:
 		return Agent(
 			config=self.agents_config['video_sourcing_agent'],
+			tools=[VideoJungleSearchTool, VideoJungleDownloadTool],
 			verbose=True
 		)
 	
@@ -35,12 +40,27 @@ class MarketingVideoEditor():
 	def scriptwriter(self) -> Agent:
 		return Agent(
 			config=self.agents_config['scriptwriter'],
+			tools=[], 
 			verbose=True
 		)
 
 	# To learn more about structured task outputs, 
 	# task dependencies, and task callbacks, check out the documentation:
 	# https://docs.crewai.com/concepts/tasks#overview-of-a-task
+	@task 
+	def scriptwriting_task(self) -> Task:
+		return Task(
+			config=self.tasks_config['scriptwriting_task'],
+			output_file='script.json'
+		)
+	
+	@task
+	def script_to_scene(self) -> Task:
+		return Task(
+			config=self.tasks_config['script_to_scene'],
+			output_file='scene.json'
+		)
+
 	@task
 	def sourcing_task(self) -> Task:
 		return Task(
@@ -48,17 +68,12 @@ class MarketingVideoEditor():
 			output_file='edit.json'
 		)
 
-	@task 
-	def scriptwriting_task(self) -> Task:
-		return Task(
-			config=self.tasks_config['scriptwriting_task'],
-			output_file='script.json'
-		)
 
 	@task
 	def video_editor_task(self) -> Task:
 		return Task(
 			config=self.tasks_config['video_editor_task'],
+			output_file='video.mp4'
 		)
 
 	@crew
