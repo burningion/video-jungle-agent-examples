@@ -1,5 +1,6 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
+from crewai_tools import SerperDevTool
 from .tools.videojungle_edit_tool import VideoJungleEditTool
 from .tools.videojungle_download import VideoJungleDownloadTool
 from .tools.videojungle_search_tool import VideoJungleSearchTool
@@ -24,7 +25,7 @@ class MarketingVideoEditor():
 	def video_editor(self) -> Agent:
 		return Agent(
 			config=self.agents_config['video_editor'],
-			tools=[VideoJungleEditTool],
+			tools=[VideoJungleEditTool()],
 			verbose=True
 		)
 
@@ -32,7 +33,7 @@ class MarketingVideoEditor():
 	def video_sourcing_agent(self) -> Agent:
 		return Agent(
 			config=self.agents_config['video_sourcing_agent'],
-			tools=[VideoJungleSearchTool, VideoJungleDownloadTool],
+			tools=[VideoJungleSearchTool(), VideoJungleDownloadTool(), SerperDevTool()],
 			verbose=True
 		)
 	
